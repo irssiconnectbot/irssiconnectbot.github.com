@@ -1,0 +1,463 @@
+/* beatstream.fi stylesheet */
+
+/*
+
+1.BASE
+2.COMMON
+3.HEADER
+4.FOOTER
+5.MAIN
+
+98.MEDIA QUERIES
+99.HELPERS
+
+*/
+
+/* reset */
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,figure,footer,header,hgroup,menu,nav,section,time,mark,audio,video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+table { border-collapse: collapse; border-spacing: 0; }
+
+/* Ensures content is hidden from all presentations, including screenreaders */
+[hidden] {
+    display: none;
+    visibility: hidden;
+}
+
+/* HTML5 */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, dialog {
+    display: block;
+}
+audio, canvas, video {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+audio:not([controls]) {
+    display: none;
+}
+
+
+/* 1.BASE
+----------------------------------------------------------------------------- */
+html {
+    background:#fff;
+    font-size: 100%;
+    height:100%;
+    overflow-y:scroll; /* Force scrollbars 100% of the time */
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+body {
+    font:100%/1.5 'Helvetica Neue', sans-serif; /* Swap these two lines around to switch between serif and sans */
+    margin:0 auto;
+    min-height:100%;
+    padding:0 0 4em;
+}
+
+body, select, input, textarea {
+    color:#222;
+}
+
+h1 {
+    font-size: 4.25em;
+    font-weight:400;
+    line-height: 1.15em;
+    margin: 0 0 1em;
+    text-rendering: optimizeLegibility;
+}
+
+h2 {
+    font-size: 2.625em; /* 42px */
+    line-height: 1.2381em;
+    margin: 0 0 0.619em;
+}
+
+h3 {
+    font-size: 1.625em; /* 26px */
+    line-height: 1em;
+    margin: 0 0 1em;
+}
+h4 {
+    font-size:1.2em;
+    margin:0 0 0.5em;
+}
+
+a {
+    color: #0645ad;
+    text-decoration:none;
+}
+a:hover {
+    color: #fd2700;
+}
+a:active {
+    color:#faa700;
+}
+a:focus {
+    outline: thin dotted;
+}
+a:hover, a:active {
+    outline: 0;
+}
+
+::-moz-selection{background:rgba(255,255,0,0.3);color:#000}
+::selection{background:rgba(255,255,0,0.3);color:#000}
+
+a::-moz-selection{background:rgba(255,255,0,0.3);color:#0645ad}
+a::selection{background:rgba(255,255,0,0.3);color:#0645ad}
+
+small {
+    font-size: 0.625em; /* 10px */
+    margin: 0 0 2.6em;
+}
+
+pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+pre, code, kbd, samp {
+    font: 1em/1.625em Menlo, Consolas, 'DejaVu Sans Mono', Monaco, 'Courier New', Courier, monospace;
+}
+
+form {
+    margin: 0;
+}
+
+fieldset {
+    border: 0;
+    padding: 0;
+}
+
+textarea {
+    overflow: auto;
+    vertical-align: top;
+}
+
+legend {
+    border: 0;
+    *margin-left: -7px;
+}
+
+button, input, select, textarea {
+    vertical-align: baseline;
+    *vertical-align: middle;
+}
+
+button, input {
+    line-height: normal;
+    *overflow: visible;
+}
+
+button, input[type="button"], input[type="reset"], input[type="submit"] {
+    cursor: pointer;
+    -webkit-appearance: button;
+}
+
+input[type="checkbox"], input[type="radio"] {
+    box-sizing: border-box;
+}
+
+input[type="search"] {
+    -webkit-appearance: textfield;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+button::-moz-focus-inner, input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+/* Reintroduce inner spacing in 'table' to avoid overlap and whitespace issues in IE6/7 */
+table button, table input {
+    *overflow: auto;
+}
+
+ul, ol {
+    padding: 0 0 0 1.4em;
+}
+
+li ul, li ol {
+    margin: 0 1.625em;
+}
+
+dl dd {
+    margin-left: 1.625em;
+}
+
+img, object, video {
+    max-width: 100%; /* Automatically scales images larger than the container. Consider this first: http://unstoppablerobotninja.com/entry/fluid-images/ */
+    /* _width: 100%; /* IE6 doesn't support max-width, so we just use width. If the image is larger than the container, just uncomment this. If it is smaller than the container, uncomment and change the 100% value to an absolute one */
+}
+
+img {
+    border: 0;
+    -ms-interpolation-mode: bicubic; /* Improve IE's resizing of images: css-tricks.com/ie-fix-bicubic-scaling-for-images */
+}
+
+/* Corrects overflow displayed oddly in IE9 */
+svg:not(:root) {
+    overflow: hidden;
+}
+
+abbr[title], dfn[title] {
+    border-bottom: 1px dotted;
+    cursor: help;
+}
+
+mark {
+    background: #ff0;
+}
+
+ins {
+    text-decoration: none;
+    background: #ff9;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-bottom: 1px solid #ddd;
+}
+
+strong, b, dt {
+    font-weight: bold;
+}
+
+dfn {
+    font-style: italic;
+}
+
+var, address {
+    font-style: normal;
+}
+
+/* Position 'sub' and 'sup' without affecting line-height: gist.github.com/413930 */
+sub, sup {
+    font-size: 0.625em;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+p {
+    margin:0 0 1.5em;
+}
+
+
+/* 2.COMMON
+----------------------------------------------------------------------------- */
+pre {
+    background:#f1f1f1;
+    border:1px solid #ddd;
+    overflow:auto;
+    padding:5px 10px;
+    max-width:100%;
+}
+code {
+    font-size:0.85em;
+}
+h2, h3 {
+    border-left:20px solid #249ed1;
+    line-height:1.3em;
+}
+h2 {
+    font-size:2em;
+    margin:0 0 .7em -60px;
+    padding:40px 0 40px 40px;
+}
+h3 {
+    border-left-width:10px;
+    font-size:1.4em;
+    padding:20px;
+}
+
+p, ul {
+    margin:0 0 1.5em;
+}
+ul {
+    padding-left:3.5em;
+}
+
+
+/* 3.HEADER
+----------------------------------------------------------------------------- */
+header {
+    padding:40px 0 0;
+}
+.identity {
+    margin:0 0 40px 40px;
+}
+h1 {
+    background:url('../img/icb_title.png') no-repeat left top;
+    font-size:3.4em;
+    font-weight:700;
+    height:64px;
+    margin:0;
+    width:474px;
+    text-indent:100%;
+    overflow:hidden;
+    white-space:nowrap;
+}
+.slogan {
+    color:#888;
+    font-size:1.1em;
+    margin-left:80px;
+}
+.icb-icon {
+    background:url('../img/icb_logo.png') no-repeat;
+    display:inline-block;
+    display:none; /* hidden for now */
+    height:64px;
+    margin-right:15px;
+    position: relative;
+    top:12px;
+    width:64px;
+    border-radius:16px;
+}
+
+
+/* 4.NAV
+----------------------------------------------------------------------------- */
+nav {
+    background:#f1f1f1;
+    overflow: hidden;
+}
+nav ul {
+    display:inline-block;
+    margin:0 auto;
+    padding:0;
+}
+nav li {
+    display:inline-block;
+    float:left;
+    list-style:none;
+}
+nav a {
+    color:#222;
+    display:block;
+    font-size:1.1em;
+    line-height:1em;
+    padding:1em 1.8em 0.6em;
+}
+
+
+/* 5.MAIN
+----------------------------------------------------------------------------- */
+.wrapper, .row {
+    overflow: hidden;
+    margin:0 auto;
+    max-width:960px;
+}
+
+.content {
+    border-top:10px solid #249ed1;
+    border-bottom:10px solid #249ed1;
+    overflow: hidden;
+    padding-bottom:60px;
+}
+
+.main {
+    float:left;
+    width:65.0602%;
+}
+.main-pad {
+    padding:0 60px;
+}
+
+.secondary {
+    float:right;
+    width:34.9398%;
+}
+
+.box {
+    border:1px solid #ededed;
+    border-top:0;
+    padding:20px;
+}
+
+
+/* x.FOOTER
+----------------------------------------------------------------------------- */
+footer {
+    color:#777;
+    font-size:12px;
+    margin:4em 0 0;
+}
+footer a {
+    color:#222;
+}
+
+
+/* 98.MEDIA QUERIES
+----------------------------------------------------------------------------- */
+
+@media only screen and (max-width: 720px) {
+    /* Smart phones */
+}
+
+@media only screen and (min-width: 768px) { 
+    /* Tablets/netbooks (768px+) styles go here */
+
+}
+
+@media only screen and (min-width: 1024px) { 
+    /* Desktops (1024px+) styles go here */
+
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+    /* @2x (retina) */
+
+}
+
+
+/* 99.HELPERS
+----------------------------------------------------------------------------- */
+.amp{font-family: Palatino,'Palatino Linotype','Book Antiqua',Baskerville,serif; font-style:italic;}
+.center{text-align:center;}
+.left{float:left;}
+.right{float:right;}
+.hide{visibility:hidden; width:0!important; height:0!important; line-height:0!important; padding:0!important; margin:0!important; }  /* Hide stuff without resorting to display:none; */
+
+/* clearfix */
+.cf:before,
+.cf:after {
+    content:"";
+    display:table;
+}
+.cf:after {
+    clear:both;
+}
+/* for IE6/7 */
+.cf {
+    *zoom:1;
+}
